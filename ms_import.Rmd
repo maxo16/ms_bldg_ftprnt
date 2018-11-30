@@ -17,6 +17,7 @@ library(geojsonio)
 ```
 
 ```{r}
+# I have yet to get the rgdal solution to work. 
 # hawaii <- readOGR(dsn = "./Hawaii.geojson", layer = "OGRGeoJSON")
 hawaii <- geojson_read("Hawaii.geojson", what = "sp")
 ```
