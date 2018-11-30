@@ -1,0 +1,29 @@
+---
+title: "MS building footprints"
+author: "SUS Teaching Team"
+date: "November 30, 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rgdal)
+library(geojsonio)
+```
+
+```{r}
+# hawaii <- readOGR(dsn = "./Hawaii.geojson", layer = "OGRGeoJSON")
+hawaii <- geojson_read("Hawaii.geojson", what = "sp")
+```
+
+Looks like the projection is there so all I should have to do is simply write the shapefile
+```{r}
+hawaii@proj4string
+writeOGR(hawaii, "./hawaii_shp","hawaii_shp", driver = "ESRI Shapefile")
+```
+
